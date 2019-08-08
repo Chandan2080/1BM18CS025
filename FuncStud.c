@@ -10,7 +10,7 @@ int validate(struct Student s);
 int qualify(struct Student s);
 int main()
 {
-    struct student st[100];
+    struct Student st[100];
     int i, n;
     printf("Enter the number of students:  ");
     scanf("%d",&n);
@@ -20,9 +20,9 @@ int main()
       scanf("%d%d%d",&st[i].id,&st[i].age,&st[i].marks);
       if(qualify(st[i]))
       {
-        printf("student %d is eligible for admission");
+        printf("\nStudent %d is eligible for admission");
         else
-        printf("student %d is not eligible for admission",i+1);
+        printf("\nStudent %d is not eligible for admission",i+1);
       }
     }
     return 0;
@@ -46,5 +46,5 @@ int qualify(struct Student s)
         return 0;
     }
     else
-    printf("Details not valid");   
+    printf("\n\nDetails not valid");   
 }
