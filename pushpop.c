@@ -1,3 +1,4 @@
+//PUSH, POP and DISPLAY the elements of the stack Without Global Variables!
 #include<stdio.h>
 int pop(int s[100],int *t);
 void push(int ele, int s[100], int *t);
