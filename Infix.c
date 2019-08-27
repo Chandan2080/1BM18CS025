@@ -9,7 +9,7 @@ int main()
 {
 	char stack[100], infix[100], postfix[100], x;
 	int i=0, j=0, top=-1;
-	printf("Enter the Infix Expression:  ");
+	printf("Enter the Infix Expression:  \t");
 	scanf("%s",infix);
 	while(infix[i]!='\0')
 	{
@@ -62,12 +62,16 @@ int main()
 
 void push(char ele, char s[100], int *t)
 {
+	
 	if((*t)<99)
 	{
 	    (*t) = (*t) + 1;
 		s[(*t)] = ele;
 	}
-
+	else
+	{
+		printf("Stack overflow!!");
+	}
 }
 
 char pop(char s[100],int *t)
@@ -79,8 +83,12 @@ char pop(char s[100],int *t)
 		(*t) = (*t) - 1;
 		return item;
 	}
+	else
+	{
+		printf("Stack underflow");
+		return ' ';	
+	}
 }
-
 int is_operator(char s)
 {
 	if(s=='*'||s=='/'||s=='+'||s=='-'||s=='^')
