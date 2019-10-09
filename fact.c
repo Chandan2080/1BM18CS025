@@ -12,5 +12,4 @@ int main(){
     printf("Enter the number:    ");
     scanf("%d",&n);
     printf("The factorial of %d is %ld",n,fact(n));
-    getch();
 }
