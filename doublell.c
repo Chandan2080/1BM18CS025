@@ -92,14 +92,48 @@ NODE delete(NODE head, int item)
         return head;
     }
 }
+NODE insert_left(NODE head,int num,int item)
+{
+    NODE p, q, temp;
+    p = getnode();
+    p->data = item;
+    if(head == NULL){
+        printf("Value can not be inserted!!!!");
+        return head;
+    }
+    if(head->data == num){
+        p->next = head;
+        head->prev = p;
+        p->prev = NULL;
+        head = p;
+        return head;
+    }
+    q = head;
+    while(q->next != NULL){
+    	temp = q;
+        q = q->next;
+        if(q->data == num){
+        	temp->next = p;
+            p->prev = temp;
+            p->next = q;
+            q->prev = p;
+            return head;
+        }
+	}
+	if(q->next == NULL){
+        printf("Given node value does not exist!!");
+        return head;
+    }
+}
 int main(){
 	NODE head = NULL;
-	int ch, ele;
+	int ch, ele, ele1;
 	do{
-		printf("\n\n1 : Insert an element to the left");
-		printf("\n2 : Delete a specific value from the list");
-		printf("\n3 : Display all the contents of the list");
-		printf("\n4 : EXIT");
+		printf("\n\n1 : Insert an element at the front");
+		printf("\n2 : Insert to the left of an element");
+		printf("\n3 : Delete a specific value from the list");
+		printf("\n4 : Display all the contents of the list");
+		printf("\n5 : EXIT");
 		printf("\nEnter your choise:\t");
 		scanf("%d",&ch);
 		switch(ch){
@@ -107,17 +141,23 @@ int main(){
 					scanf("%d",&ele);
 					head = insert(head, ele);
 					break;
-			case 2: printf("Enter the eleemnt to be deleted:\t");
+			case 2: printf("Enter the element to be inserted:\t");
+					scanf("%d",&ele);
+					printf("Enter the element to which you want to insert an element to the left:\t");
+					scanf("%d",&ele1);
+					head = insert_left(head, ele1, ele);
+					break;
+			case 3: printf("Enter the element to be deleted:\t");
 					scanf("%d",&ele);
 					head = delete(head, ele);
 					break;
-			case 3: display(head);
+			case 4: display(head);
 					break;
-			case 4: printf("EITING FROM THE PROGRAM!!");
+			case 5: printf("EITING FROM THE PROGRAM!!");
 					exit(0);
 					break;
 			default:printf("Invalid Input!!!");
 		}		
-	}while(ch!=4);
+	}while(ch!=5);
 	return 0;
 }
